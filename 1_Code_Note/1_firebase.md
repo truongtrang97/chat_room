@@ -1,4 +1,4 @@
-# Firebase
+# Giới thiệu
 
 -   `Firebase` là một nền tảng để phát triển ứng dụng di động và trang web, bao gồm các API đơn giản và mạnh mẽ mà không cần backend hay server.
 -   Firebase là dịch vụ cơ sở dữ liệu hoạt động trên nền tảng đám mây – cloud.
@@ -15,7 +15,9 @@
 -   https://wiki.matbao.net/firebase-la-gi-giai-phap-lap-trinh-khong-can-backend-tu-google/
 -   https://viblo.asia/p/tim-hieu-so-luoc-ve-firebase-Eb85oeOmZ2G
 
-## Firebase anthentication với fb hoặc google
+# Firebase anthentication với fb hoặc google
+
+## Facebook
 
 -   Tạo project trên firebase
 -   Kết nối project trên firebase với project của chúng ta.
@@ -25,3 +27,8 @@
 -   Cấu hình firebase và facebook để chúng kết hợp với nhau.
     -   Vào Anthentication của firebase -> Get Started -> enable Facebook.
     -   Vào https://developers.facebook.com/ tạo ứng dụng mới -> chọn người tiêu dùng -> tạo app -> chọn đăng nhập bằng facebook -> copy URI từ Authentication của firebase qua-> save. Vào cài đặt copy ID và ID secret của facebook qua firebase -> Save -> Xong.
+
+# Ref
+
+-   `const auth = firebase.auth();` // https://firebase.google.com/docs/auth/web/facebook-login#web-version-8_4
+-   ` const db = firebase.firestore();` // https://firebase.google.com/docs/firestore/quickstart#web-version-8

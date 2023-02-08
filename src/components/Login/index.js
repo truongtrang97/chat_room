@@ -9,11 +9,7 @@ function Login() {
     // https://firebase.google.com/docs/auth/web/facebook-login#web-version-8_4
     const handleFbLogin = () => {
         auth.signInWithPopup(fbProvider);
-        auth.onAuthStateChanged((user) => {
-            console.log('user: ', user);
-        });
     };
-
     return (
         <div>
             <Row justify="center" style={{ height: 800 }}>
