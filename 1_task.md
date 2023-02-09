@@ -19,6 +19,12 @@
     -   Dùng clean up function của useEffect để hủy đăng kí khi component unmount.
     -   Bọc App của chúng ta bằng AuthProvider
 
+# Build UI với antd và style-components
+
+-   Set max height và tạo thanh scroll cho meassage List
+    -   max-height: 100%;
+    -   overflow-y: auto; // Tạo thanh scoll khi height vượt quá chiều cao content
+
 # Task tomorow
 
 -   style syntax: styled-component.

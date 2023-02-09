@@ -28,6 +28,36 @@
     -   Vào Anthentication của firebase -> Get Started -> enable Facebook.
     -   Vào https://developers.facebook.com/ tạo ứng dụng mới -> chọn người tiêu dùng -> tạo app -> chọn đăng nhập bằng facebook -> copy URI từ Authentication của firebase qua-> save. Vào cài đặt copy ID và ID secret của facebook qua firebase -> Save -> Xong.
 
+# Sử dụng database trên firebase với FireStore(realtime database)
+
+-   Vào firebase chọn project chat-room -> chọn Build chọn FireStore -> chọn vùng.
+-   Tạo thành công sẽ vào giao diện sau : https://console.firebase.google.com/project/chat-room-26b3d/firestore/data/~2F
+
+## Đọc ghi dữ liệu lên firestore.
+
+-   Add: `db.collection(collection_name).add({data})`
+
+    -   `Uncaught (in promise) FirebaseError: Missing or insufficient permissions.`: Lỗi không add được dữ liệu lên firestore: https://stackoverflow.com/questions/46590155/firestore-permission-denied-missing-or-insufficient-permissions
+
+-   `Một ưu điểm của firestore là realtime database`:
+    -   Giúp chúng ta có thể lắng nghe sự kiện khi có collection có sự thay đổi thêm hay xóa dữ liệu.
+    -   Firebase cung cấp cho chúng ta một sự kiện là onSnapshot(event listioner), khi có sự thay đổi thì callback trong onSnapshot sẽ được gọi ngay, giống onClick.
+
+# Firebase Local Emulator Suite. Giả lập firebase dưới local
+
+-   Cài đặt và sử dụng các tính năng trên firebase dưới local.
+-   https://firebase.google.com/docs/emulator-suite
+    -   Tạo thư mục emulator cd tới
+    -   Cài đặt firebase command line: `sudo npm i -g firebase-tools`
+    -   Login dưới local: `firebase login`
+    -   Tạo firebase dưới local: `firebase init`. Dùng `space` để chọn enter để đi tiếp. - Sau khi cài đặt giả lập thành công sẽ xuất hiện các file cấu hình trong thư mục emulators.
+-   Run firebase emulator bằng: `firebase emulators:start`
+-   Cấu hình trong project React để trỏ tới các server emulators:
+    -   `auth.useEmulator('http://localhost:9099')`
+    -   `db.useEmulator('localhost', '8080')`
+    -   Check server có phải đang chạy ở localhost hay không: `if (window.location.hostname === 'localhost')`
+    -   Sau khi reset lại server sẽ tự logout và sử dụng server dưới localhost.
+
 # Ref
 
 -   `const auth = firebase.auth();` // https://firebase.google.com/docs/auth/web/facebook-login#web-version-8_4

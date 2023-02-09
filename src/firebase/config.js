@@ -28,5 +28,11 @@ firebase.analytics();
 const auth = firebase.auth(); // https://firebase.google.com/docs/auth/web/facebook-login#web-version-8_4
 const db = firebase.firestore(); // https://firebase.google.com/docs/firestore/quickstart#web-version-8
 
+// Config sử dụng DB dưới local
+auth.useEmulator('http://localhost:9099');
+if (window.location.hostname === 'localhost') {
+    db.useEmulator('localhost', '8080');
+}
+
 export { db, auth };
 export default firebase;

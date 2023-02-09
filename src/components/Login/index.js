@@ -1,14 +1,24 @@
 import React from 'react';
 import { Row, Col, Button, Typography } from 'antd';
 import firebase, { auth } from '../../firebase/config';
+import { addDocument } from '../../firebase/service';
 
 const { Title } = Typography;
 const fbProvider = new firebase.auth.FacebookAuthProvider();
 
 function Login() {
     // https://firebase.google.com/docs/auth/web/facebook-login#web-version-8_4
-    const handleFbLogin = () => {
-        auth.signInWithPopup(fbProvider);
+    const handleFbLogin = async () => {
+        const { additionalUserInfo, user } = await auth.signInWithPopup(fbProvider);
+        if (additionalUserInfo?.isNewUser) {
+            addDocument('users', {
+                displayName: user.displayName,
+                email: user.email,
+                photoURL: user.photoURL,
+                uid: user.displayName,
+                providerId: additionalUserInfo.providerId,
+            });
+        }
     };
     return (
         <div>

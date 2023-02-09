@@ -16,10 +16,10 @@ export default function AuthProvider({ children }) {
                 const { displayName, email, photoURL } = user;
                 setUser({ displayName, email, photoURL });
                 history.push('/');
-                setIsLoading(false);
             } else {
                 history.push('/login');
             }
+            setIsLoading(false);
         });
 
         return () => {
