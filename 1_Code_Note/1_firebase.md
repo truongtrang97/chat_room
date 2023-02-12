@@ -40,8 +40,17 @@
     -   `Uncaught (in promise) FirebaseError: Missing or insufficient permissions.`: Lỗi không add được dữ liệu lên firestore: https://stackoverflow.com/questions/46590155/firestore-permission-denied-missing-or-insufficient-permissions
 
 -   `Một ưu điểm của firestore là realtime database`:
+
     -   Giúp chúng ta có thể lắng nghe sự kiện khi có collection có sự thay đổi thêm hay xóa dữ liệu.
     -   Firebase cung cấp cho chúng ta một sự kiện là onSnapshot(event listioner), khi có sự thay đổi thì callback trong onSnapshot sẽ được gọi ngay, giống onClick.
+
+-   Search dữ liệu trong db:
+    -   `Không hổ trợ full text search`, ví dụ user.name "Vuong", search trong user.name vs từ V sẽ không ra kết quả.
+    -   Để search full text phải sử dụng thư viện bên thứ ba như Elastic search hoặc Algolia.(tốn phí khi search nhiều)
+    -   Tự xậy dựng thuật toán search:
+        -   Dựa vào array contain của where trong db
+        -   tách displayName từng từ vào một trường khác tên là keywords
+        -   sử dụng: `keywords: generateKeywords(user.displayName),`
 
 # Firebase Local Emulator Suite. Giả lập firebase dưới local
 

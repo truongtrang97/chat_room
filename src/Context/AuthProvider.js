@@ -11,10 +11,10 @@ export default function AuthProvider({ children }) {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        const unsubscribed = auth.onAuthStateChanged((user) => {
-            if (user) {
-                const { displayName, email, photoURL } = user;
-                setUser({ displayName, email, photoURL });
+        const unsubscribed = auth.onAuthStateChanged((data) => {
+            if (data) {
+                const { displayName, email, uid, photoURL } = data;
+                setUser({ displayName, email, uid, photoURL });
                 history.push('/');
             } else {
                 history.push('/login');
@@ -27,5 +27,5 @@ export default function AuthProvider({ children }) {
         };
     }, [history]);
 
-    return <AuthContext.Provider value={user}>{isLoading ? <Spin /> : children}</AuthContext.Provider>;
+    return <AuthContext.Provider value={{ user }}>{isLoading ? <Spin /> : children}</AuthContext.Provider>;
 }

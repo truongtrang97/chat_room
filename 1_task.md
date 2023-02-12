@@ -29,3 +29,8 @@
 
 -   style syntax: styled-component.
 -   Các component của antd.
+
+# Làm phần hiển thị tin nhắn (cuối: 2:02 -> hết)
+
+-   Cần lấy dữ liệu từ thẻ Input và khi người dùng nhấn nút gửi sẽ lưu dữ liệu lên DB
+-   Sau đó lấy dữ liệu từ db và hiển thị lại tin nhắn.
