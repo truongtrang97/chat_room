@@ -5,11 +5,12 @@ import { addDocument, generateKeywords } from '../../firebase/service';
 
 const { Title } = Typography;
 const fbProvider = new firebase.auth.FacebookAuthProvider();
+const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 function Login() {
     // https://firebase.google.com/docs/auth/web/facebook-login#web-version-8_4
-    const handleFbLogin = async () => {
-        const { additionalUserInfo, user } = await auth.signInWithPopup(fbProvider);
+    const handleLogin = async (provider) => {
+        const { additionalUserInfo, user } = await auth.signInWithPopup(provider);
         if (additionalUserInfo?.isNewUser) {
             addDocument('users', {
                 displayName: user.displayName,
@@ -28,8 +29,10 @@ function Login() {
                     <Title style={{ textAlign: 'center' }} level={3}>
                         Chat Room
                     </Title>
-                    <Button style={{ width: '100%', marginBottom: 5 }}>Đăng nhập bằng Google</Button>
-                    <Button style={{ width: '100%' }} onClick={handleFbLogin}>
+                    <Button style={{ width: '100%', marginBottom: 5 }} onClick={() => handleLogin(googleProvider)}>
+                        Đăng nhập bằng Google
+                    </Button>
+                    <Button style={{ width: '100%' }} onClick={() => handleLogin(fbProvider)}>
                         Đăng nhập bằng Facebook
                     </Button>
                 </Col>
